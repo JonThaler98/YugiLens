@@ -6,4 +6,21 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Card.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="Magic.cpp" />
+    <ClCompile Include="CardDatabase.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Card.h" />
+    <ClInclude Include="Monster.h" />
+    <ClInclude Include="Magic.h" />
+    <ClInclude Include="CardDatabase.h" />
+  </ItemGroup>
 </Project>
