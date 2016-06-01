@@ -8,6 +8,8 @@ public:
     ~CardDatabase();
 
 private:
+    void AddCard(Card* card);
+
     std::vector<Card*> m_Cards;
 };
 

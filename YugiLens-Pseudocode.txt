@@ -36,7 +36,7 @@ Create Cards:
 		enum icon = Normal;
 	
 Create Decks:
-	Decks will be of type deque and to be used have to be betwee 40-60 cards
+	Decks will be of type deque and to be used have to be between 40-60 cards
 	Building decks will be adding index to end of deque
 	if deque size is less than 60
 	masterdeck.pushback(Card Index);

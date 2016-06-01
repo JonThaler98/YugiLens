@@ -12,6 +12,7 @@
 #include <windows.h>
 #include <vector>
 #include <string>
+#include <deque>
 
 #ifndef ASSERT
 #ifdef _DEBUG
