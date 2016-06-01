@@ -1,0 +1,94 @@
+Yugio Game Sudo Code
+
+Prototype idea:
+1 deck of 40 cards
+shuffle deck (deque swap)
+card classes (Spell Card, Trap Card, Monster Card)
+Life Points (8000 LP)
+Coin Toss(Heads, Tails)
+Dice Roll(1-6)
+Game Mat/Field/Play Zones (Monster Zone, Spell & Trap Zone, Graveyard, Deck Zone)
+Card Positions (Attack, Defense, Set) (states 1,2,3)
+
+Card Types:
+Monster
+		Name, Attribute, Level, ATK, DEF, Type, Effect
+Spell/Trap
+		Name, Type, Effect, Icon
+		
+Sudo Code:
+
+Create Cards:
+	Card Class
+		int index = 0;
+		string name = null;
+		string description = null;
+		string effect = null;
+		enum effectPhase = null;
+	Monster Class
+		enum attribute = null;
+		int level = 0;
+		int attack = 0;
+		int defense = 0;
+		
+	Spell/Trap Class
+		enum type = null;
+		enum icon = Normal;
+	
+Create Decks:
+	Decks will be of type deque and to be used have to be betwee 40-60 cards
+	Building decks will be adding index to end of deque
+	if deque size is less than 60
+	masterdeck.pushback(Card Index);
+	
+Shuffle Deck:
+	create copy of master deck so that we can edit/shuffle/remove cards when necessary
+	randomely shuffle each card with another card until deck is randomized
+	
+Pre Game Setup:
+	Shuffle Decks
+	Flip Coin
+	Winner Chooses 1st or 2nd
+	Draw 5 cards for each person (hand is of type deque, pushback first 5 cards of the deck, popfront first 5 cards of the deck)
+
+Game:
+	While Loop until end condition is met: Players will take turns until one player's Life Points is zero or until a player can no longer draw a card
+	while(Player 1 LP > 0 && Player 2 LP > 0 && Player 1 next card != null && Player 2 next card != null)
+	{
+		while player 1 turn do turn
+		while player 2 turn do turn
+	}
+	
+Each Turn
+	Draw Phase: Draw 1 card(push hand, pop deck) and other possible actions (Spell/Trap cards)
+	Main Phase: 
+			Summon/Set any 1 monster (pop hand, push monster zone or spell/trap zone as appropriate, set state to face down, face up attack, or face up defense)
+			Summon/Set any Spell/Trap (pop hand, push monster zone or spell/trap zone as appropriate, set state to face down, face up attack, or face up defense)
+			Change Battle Position - if monster card has not changed this turn and has not been played this turn then set state to attack or defense
+			Activate card or effect
+	Battle Phase (while the player wants to attack)
+		If this is not the first turn continue
+		Select monster to attack with, select monster to attack
+		Allow player being attacked to activate counter trap cards
+		If attacked card is face down flip face up defense position
+		resolve any flip effect
+		if targeted monster changes in any way go back to step 2
+		if targeted monster is in attack position then find the difference between attack 1 and attack 2. 
+			if difference is positive then destroy targeted monster and send to graveyard(erase opponent monster zone, push opponent graveyard) and subtract difference from opponent's LP
+			if no difference then destry both monsters and send to graveyard(erase both monster zones, push both graveyards)
+			if difference is negative then destroy attacking monster and send to graveyard(erase monster zone, push graveyard) and subtract the absolute difference from LP
+		if targeted monster is in defense position then find the difference between attack 1 and defense 2
+			if difference is positive then destroy attacked monster and send to graveyard(erase opponent monster zone, push opponent graveyard)
+			if no difference then destry both monsters and send to graveyard(erase both monster zones, push both graveyards)
+			if difference is negative then destroy attacking monster and send to graveyard(erase monster zone, push graveyard) and subtract the difference from LP
+		Go back to step 2 and repeat until player is done attacking
+	Main Phase 2:
+		if player did not already summon or set a monster then they can do so
+		if a monsters' position has not been changed yet and the monster did not attack in battle phase then the player can change it 
+		can activate a cards or effects
+		can set spell or trap cards
+	End Phase:
+		While the player has more than 6 cards in their hand then select as many cards as needed and discard them to the graveyard
+		Resolve any card effects which activate in this phase
+		can activate any trap cards or quick play spell cards
+	set turn to other player
