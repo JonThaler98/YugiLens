@@ -14,6 +14,7 @@
     <ClCompile Include="Magic.cpp" />
     <ClCompile Include="CardDatabase.cpp" />
     <ClCompile Include="Deck.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Model.h" />
@@ -24,5 +25,6 @@
     <ClInclude Include="Magic.h" />
     <ClInclude Include="CardDatabase.h" />
     <ClInclude Include="Deck.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
 </Project>
