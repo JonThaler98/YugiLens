@@ -184,6 +184,7 @@
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardDatabase.h" />
     <ClInclude Include="Deck.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Magic.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Monster.h" />
@@ -195,6 +196,7 @@
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardDatabase.cpp" />
     <ClCompile Include="Deck.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Magic.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Monster.cpp" />

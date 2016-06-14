@@ -27,3 +27,16 @@ void Player::SetUpGame()
         m_DrawDeck->TransferCardTo(m_DrawDeck->GetTopCard(), &m_Hand);
     }
 }
+
+// Try to draw a card, and return false if we could not.
+bool Player::TryDrawCard()
+{
+    if (m_DrawDeck->GetCardCount() == 0) {
+        return false;
+    }
+
+    Card* card = m_DrawDeck->GetTopCard();
+    m_DrawDeck->TransferCardTo(card, &m_Hand);
+
+    return true;
+}
